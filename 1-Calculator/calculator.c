@@ -2,6 +2,7 @@
  * FILE: calculator.c
  * AUTHOR: MARLEY
  * DESCRIPTION: A simple terminal calculator
+ * DATE:30/05/2024
  */
 
 #include <stdio.h>
