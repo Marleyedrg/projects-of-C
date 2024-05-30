@@ -13,7 +13,7 @@ My motivation for this project is to learn more about the basis of a low-level l
 - Practice problem solving using C.
 - Build a solid foundation to explore more advanced topics in C.
 
-This project is for learning purposes only. There is no need for the challenges or projects presented to be suitable for all contexts or to follow best programming practices. Participants must use their own judgment to solve problems.
+This project is for learning purposes only. There is no need for the challenges or projects presented to be suitable for all contexts or to follow best programming practices. i will just use my own judgment to solve problems.
 
 ## PROJECTS
 # 1. [ ] Building Calculator using C programming
