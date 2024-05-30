@@ -16,21 +16,21 @@ My motivation for this project is to learn more about the basis of a low-level l
 This project is for learning purposes only. There is no need for the challenges or projects presented to be suitable for all contexts or to follow best programming practices. Participants must use their own judgment to solve problems.
 
 ## PROJECTS
-1. [ ] Building Calculator using C programming
-2. [ ] Hangman Game
-3. [ ] Building a Calendar using C 
-4. [ ] Bank Management System
-5. [ ] Student record management system
-6. [ ] Unit converter C project
-7. [ ] Virtual workplace application
-8. [ ] Food order management system
-9. [ ] Mini Voting System
-10. [ ] Library Management System
-11. [ ] Bus reservation system
-12. [ ] Hospital management system using C project
-13. [ ] Typing Tutor
-14. [ ] Contact management system 
-15. [ ] Railway reservation system
+# 1. [ ] Building Calculator using C programming
+# 2. [ ] Hangman Game
+# 3. [ ] Building a Calendar using C 
+# 4. [ ] Bank Management System
+# 5. [ ] Student record management system
+# 6. [ ] Unit converter C project
+# 7. [ ] Virtual workplace application
+# 8. [ ] Food order management system
+# 9. [ ] Mini Voting System
+# 10. [ ] Library Management System
+# 11. [ ] Bus reservation system
+# 12. [ ] Hospital management system using C project
+# 13. [ ] Typing Tutor
+# 14. [ ] Contact management system 
+# 15. [ ] Railway reservation system
 
 ALL PROJECTS WERE TAKEN FROM THIS WEBSITE:
 ### codegnan.com
