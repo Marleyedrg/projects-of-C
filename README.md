@@ -17,7 +17,7 @@ This project is for learning purposes only. There is no need for the challenges 
 
 ## PROJECTS
 # 1. [x] Building Calculator using C programming
-# 2. [ ] Hangman Game
+# 2. [ ] slice function in c
 # 3. [ ] Building a Calendar using C 
 # 4. [ ] Bank Management System
 # 5. [ ] Student record management system
