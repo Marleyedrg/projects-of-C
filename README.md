@@ -16,8 +16,9 @@ My motivation for this project is to learn more about the basis of a low-level l
 This project is for learning purposes only. There is no need for the challenges or projects presented to be suitable for all contexts or to follow best programming practices. i will just use my own judgment to solve problems.
 
 ## PROJECTS
-# 1. [ ] Building Calculator using C programming
-# 2. [ ] Hangman Game
+# 1. [x] Building Calculator using C programming
+https://github.com/Marleyedrg/30-days-of-C/blob/main/1-Calculator/calculator.c
+# 2. [ ] slice function in c
 # 3. [ ] Building a Calendar using C 
 # 4. [ ] Bank Management System
 # 5. [ ] Student record management system
