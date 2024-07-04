@@ -28,7 +28,7 @@ int main(){
 
         double result = calc(first,second,operator);
 
-        printf("%.2lf %C %.2lf= %.2lf\n",first,second,operator,result);
+        printf("%.2lf %C %.2lf= %.2lf\n",first, operator,second ,result);
 
         return 0;
     }
@@ -40,9 +40,9 @@ double calc(double x, double y, char oper){
     case '+':
         return x + y;
     case '-':
-        return x + y;
+        return x - y;
     case '*':
-        return x + y;
+        return x * y;
     case '/':
         if (y == 0)
         {
