@@ -1,29 +1,81 @@
-#include <stdio.h>
+/**
+ * FILE: slice.c
+ * AUTHOR: MARLEY
+ * DESCRIPTION: A implementatio of slice function in C
+ * DATE:10/07/2024
+ */
 
-int slice(char string[], int size,int start, int end);
+#include <stdio.h>
+#include <stdlib.h>
+
+//Global declaration
+
+char* slice(char* string, int start, int end);
 
 int main(){
-    char string[] = "Hello World";
 
-    int size = sizeof(string)/(sizeof(char))-2;
+    char string[] = "Marley";
+    int start = 3;
+    int end = 1;
+
+    printf("-> %s\n",slice(string,start,end));
     
-    slice(string, size, 5, 112);
 }
 
-int slice(char string[], int size,int start, int end){
-    
-    if(start > 0 && start > end || (end > size || end < start)){
-        printf("The start needs to be lower than the end|The end needs to be bigger than the end!\n");
-        return -1;
+char* slice(char* string, int start, int end){
+
+    int oldString_size = sizeof(char) * sizeof(string)-3;
+
+    if(end > oldString_size){
+        printf("%s","the end is higher than the size [end = string size]\n");
+        end = oldString_size;
+    }
+    if(start > oldString_size){
+        printf("%s","the start is higher than the size [start = string size]\n");
+        start = oldString_size;
+    }
+
+    if(end < 0 || start < 0){
+        end = oldString_size+1;
+        printf("%s\n","end cannot be less than zero");
+    }
+    if(start < 0){
+        start = 0;
+        printf("%s\n","start cannot be less than zero");
+    }
+
+    if (end < start || (start > end))
+    {
+        printf("start:%d end:%d\n",start,end);
+        int temp = 0;
+
+        temp = start;
+        start = end;
+        end = temp;
+        printf("%s\n","swapped: (end < start) or (start > end)");
+        printf("start:%d end:%d\n",start,end);
     }
     
-    char newStr[end - start + 2];
+
+    int size = (end - start) + 1;
+
+    char *output = (char *)malloc(size+1);
+
+    int new = 0,old = start;
+    do
+    {
+        output[new] = string[old];
+        //Assign each position between the start and end in the new string corresponding.
+
+        new++, old++;
+    } while (new < size-1);
+    //Why use do-while?
+    //
     
-    for (int pX = start,pY = 0 ; pX <= end; pX++, pY++){
-        newStr[pY] = string[pX];
-    }
-    newStr[end - start+1] = '\0';
-    printf("%s\n",newStr);
+    output[size] = '\0';
+
+    return output;
 
 }
+
 
