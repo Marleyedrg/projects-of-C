@@ -1,5 +1,5 @@
-# 30-days-of-C
-30 days and 15 projects to learn C language, knowing just the basics.
+# 15-projects-of-C
+15 projects to learn C language, knowing just the basics.
 
 ## DESCRIPTION
 This is a personal project, with the objective of learning the C language, here I am doing practice-oriented learning, researching and racking my brain to solve problems.
