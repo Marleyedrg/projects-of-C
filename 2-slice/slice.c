@@ -9,7 +9,6 @@
 #include <stdlib.h>
 
 //Global declaration
-
 char* slice(char* string, int start, int end);
 
 int main(){
