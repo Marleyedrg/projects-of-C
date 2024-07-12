@@ -19,7 +19,9 @@ This project is for learning purposes only. There is no need for the challenges 
 # 1. [x] Building Calculator using C programming
 https://github.com/Marleyedrg/30-days-of-C/blob/main/1-Calculator/calculator.c
 # 2. [x] slice function in c
-# 3. [ ] Building a Calendar using C 
+https://github.com/Marleyedrg/15-projects-of-C/tree/main/2-slice
+# 3. [x] Building a Calendar using C 
+https://github.com/Marleyedrg/15-projects-of-C/tree/main/3-calendar
 # 4. [ ] Bank Management System
 # 5. [ ] Student record management system
 # 6. [ ] Unit converter C project
