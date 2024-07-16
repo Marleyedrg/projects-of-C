@@ -11,6 +11,7 @@
 void makeSpace();
 void makeDays(int total);
 
+//just colors
 #define GRN "\e[0;32m"
 #define WHT "\e[0;37m"
 
