@@ -9,13 +9,20 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h> 
 
 #define MAX_NAME_LENGTH 50
-#define MAX_ACC_NO 8
+#define MAX_ACC_NO 6
 
-char name[MAX_NAME_LENGTH],accNo[MAX_ACC_NO ];
+typedef struct
+{
+    char *name;
+    char *accNo;
+}User;
+
 
 int menu ();
+void initializeUser(User *user);
 void createAccount(FILE *fptr);
 void joinAccount();
 void retrieveAccount();
@@ -23,7 +30,7 @@ void deleteAccount();
 
 int main()
 {
-    FILE *fptr = fopen("user_list.txt", "w");
+    FILE *fptr = fopen("user_list.txt", "r");
     switch (menu()) {
         case 1:
             createAccount(fptr);
@@ -32,9 +39,6 @@ int main()
             joinAccount();
             break;
         case 3:
-            retrieveAccount();
-            break;
-        case 4:
             deleteAccount();
         break;
         default:
@@ -48,27 +52,36 @@ int menu(){
     int option;
 
     printf("\nMenu:\n");
-    printf("1. Criar conta\n");
-    printf("2. Entrar na conta\n");
-    printf("3. Recuperar conta\n");
-    printf("4. Excluir conta\n");
-    printf("5. Sair\n");
+    printf("1. Create account\n");
+    printf("2. Log into account\n");
+    printf("4. Delete account\n");
+    printf("5. Exit\n");
 
     return scanf("%d",&option);
 }
 
 void createAccount(FILE *fptr){
-    char *newAccName = (char*) malloc((MAX_NAME_LENGTH + 1) * sizeof(char));
-    printf("Create a name for your account:");
-    scanf("%s", newAccName);
+    User newUser;
+    initializeUser(&newUser);
 
+    printf("Create a name for your account:");
+    scanf("%s", newUser.name);
+
+    for (int i = 0; newUser.name[i] != '\0'; i++)
+    {
+        if (newUser.name[i] >= 'a' && newUser.name[i]  <= 'z')
+        {
+            newUser.name[i] -= 32;
+        }
+    }
+    
     srand(time(NULL));
-    int randomNUM =  rand() % 1000000;
+    int randomNUM = (rand() % 9000) + 1000;
     char newAccNum[MAX_ACC_NO];
     int tempN = 0;
     char temp[3];
 
-    snprintf(newAccNum, sizeof(newAccNum), "%06d", randomNUM);
+    snprintf(newAccNum, sizeof(newAccNum), "%04d", randomNUM);
 
     for (int i = 0; i < MAX_ACC_NO-2; i++)
     {
@@ -78,13 +91,27 @@ void createAccount(FILE *fptr){
 
     strcat(newAccNum, temp);
 
-    printf("account name:%s\naccount number:%s\n",newAccName,newAccNum);
+    printf("account name:%s\naccount number:%s\n",newUser.name,newAccNum);
 
     //pass information to the file
 
-    fptr = fopen("user_list.txt", "w");
-    fprintf(fptr, "account name:%s\naccount number:%s\n",newAccName,newAccNum);
+    fptr = fopen("user_list.txt", "a");
+    fprintf(fptr, "%sZ%s\n",newUser.name,newAccNum);
 }
-void joinAccount(){}
-void retrieveAccount(){}
+void joinAccount(){
+    User currentUser;
+    initializeUser(&currentUser);
+
+    printf("Account name:");
+    scanf("%s", currentUser.name);
+
+    printf("Account number:");
+    scanf("%s", currentUser.name);
+}
 void deleteAccount(){}
+
+void initializeUser(User *user) {
+    // Allocate memory for name and account number
+    user->name = (char *)malloc((MAX_NAME_LENGTH + 1) * sizeof(char));
+    user->accNo = (char *)malloc((MAX_ACC_NO + 1) * sizeof(char));
+}

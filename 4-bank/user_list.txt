@@ -1,2 +1,0 @@
-account name:ola
-account number:18786333
