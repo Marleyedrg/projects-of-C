@@ -14,6 +14,10 @@
 #define MAX_NAME_LENGTH 50
 #define MAX_ACC_NO 6
 
+#define GRN "\e[0;32m"
+#define WHT "\e[0;37m"
+#define RED "\e[0;31m"
+
 typedef struct
 {
     char *name;
@@ -23,20 +27,28 @@ typedef struct
 
 int menu ();
 void initializeUser(User *user);
-void createAccount(FILE *fptr);
-void joinAccount();
-void retrieveAccount();
-void deleteAccount();
+void createAccount();
+int joinAccount(User *possibleUser);
+int isValidAccNo(char *accNo);
+void startBank(User *user);
+void deleteAccount();       
 
 int main()
 {
-    FILE *fptr = fopen("user_list.txt", "r");
+    User user;
+    initializeUser(&user);
     switch (menu()) {
         case 1:
-            createAccount(fptr);
+            createAccount();
             break;
         case 2:
-            joinAccount();
+            if(joinAccount(&user) == 1){
+                free(user.name);
+                free(user.accNo);
+                main();
+            }else{
+                startBank(&user);
+            }
             break;
         case 3:
             deleteAccount();
@@ -57,10 +69,12 @@ int menu(){
     printf("4. Delete account\n");
     printf("5. Exit\n");
 
-    return scanf("%d",&option);
+    (scanf("%d",&option));
+
+    return option;
 }
 
-void createAccount(FILE *fptr){
+void createAccount(){
     User newUser;
     initializeUser(&newUser);
 
@@ -95,20 +109,96 @@ void createAccount(FILE *fptr){
 
     //pass information to the file
 
-    fptr = fopen("user_list.txt", "a");
-    fprintf(fptr, "%sZ%s\n",newUser.name,newAccNum);
+    FILE *fptr = fopen("user_list.txt", "a");
+    fprintf(fptr, "%s@%s\n",newUser.name,newAccNum);
+    fclose(fptr);
+
+    free(newUser.name);
+    free(newUser.accNo);
+
+    printf(GRN"\n%s\n","account created!!!"WHT);
+    main();
 }
-void joinAccount(){
-    User currentUser;
-    initializeUser(&currentUser);
+int joinAccount(User *possibleUser){
 
     printf("Account name:");
-    scanf("%s", currentUser.name);
+    scanf("%s", possibleUser->name);
+
+    for (int i = 0; possibleUser->name[i] != '\0'; i++)
+    {
+        if (possibleUser->name[i] >= 'a' && possibleUser->name[i]  <= 'z')
+        {
+            possibleUser->name[i] -= 32;
+        }
+    }
 
     printf("Account number:");
-    scanf("%s", currentUser.name);
+    scanf("%s", possibleUser->accNo);
+
+    if(isValidAccNo(possibleUser->accNo) == 1){
+        return 1;
+    }
+
+    char *auth = (char *) malloc((strlen(possibleUser->name) + strlen(possibleUser->accNo) + 2) * sizeof(char));
+
+    sprintf(auth,"%s@%s", possibleUser->name, possibleUser->accNo);
+    snprintf(auth, sizeof(auth), "%s@%s", possibleUser->name, possibleUser->accNo);
+
+    FILE *fptr = fopen("user_list.txt", "r");
+
+    char *line = (char *) malloc((strlen(possibleUser->name) + strlen(possibleUser->accNo) + 2) * sizeof(char));
+
+    while(fgets(line,sizeof(line), fptr)){
+        if(strstr(line, auth) != NULL){
+            printf(GRN"\nlogin successful!\n"WHT);
+            return 0;
+        }
+    }
+    if(feof(fptr)){
+        printf(RED"\nfail to login!\n"WHT);
+        return 1;
+    }
+
+    fclose(fptr);
 }
 void deleteAccount(){}
+
+int isValidAccNo(char *accNo){
+    int sum = 0;
+    int endOfAccNo = 0;
+
+    int AccNolen = sizeof(accNo); 
+
+    if (AccNolen != MAX_ACC_NO + 2)
+    {
+        printf(RED"\nfail to login!\n"WHT);
+        return 1;
+    }
+    
+
+    for (int i = 0, j = 4; i < 4; i++,j++)
+    {
+        char a[3];
+        a[i] = accNo[j];
+
+        sum += accNo[i] - '0';
+
+        if(j == 5){
+            endOfAccNo += atoi(a);
+        }
+    }
+
+    if(sum == endOfAccNo){
+        return 0;
+    }
+    
+    printf(RED"\nfail to login!\n"WHT);
+    return 1;
+}
+
+void startBank(User *user)
+{
+}
 
 void initializeUser(User *user) {
     // Allocate memory for name and account number
