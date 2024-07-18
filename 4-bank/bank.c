@@ -12,6 +12,7 @@
 #include <ctype.h> 
 
 #include "structTypes.h"
+
 #include "authentication.h"
 #include "bankFunc.h"
 
@@ -28,6 +29,7 @@ int main()
     switch (menu(1)) {
         case 1:
             createAccount();
+            menu(1);
             break;
         case 2:
             if(joinAccount(&user) == 1){
@@ -35,7 +37,7 @@ int main()
                 free(user.accNo);
                 main();
             }else{
-                startBank(&user);
+                startBank(&user,menu(2));
             }
             break;
         default:

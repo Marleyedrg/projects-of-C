@@ -24,7 +24,7 @@ typedef struct
 {
     char *traTime;
     char *type;
-    char *value;
+    double value;
     
     User fromUser;
     User toUSER;
@@ -39,8 +39,7 @@ void initializeUser(User *user) {
     user->accNo = (char *)malloc((MAX_ACC_NO + 1) * sizeof(char));
 }
 
-
 void initializeTransaction(Tra *tra) {
-    // tra->traTime = (char *)malloc()
-
+    tra->traTime = (char *)malloc(25*sizeof(char));
+    tra->type = (char *)malloc(18+1*sizeof(char));
 }

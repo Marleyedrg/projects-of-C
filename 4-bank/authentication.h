@@ -115,6 +115,7 @@ int joinAccount(User *possibleUser){
         printf(RED"\nfail to login!\n"WHT);
         return 1;
     }
+    free(line);
 
     fclose(fptr);
 }
