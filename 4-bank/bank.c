@@ -29,7 +29,7 @@ int main()
     switch (menu(1)) {
         case 1:
             createAccount();
-            menu(1);
+            main();
             break;
         case 2:
             if(joinAccount(&user) == 1){

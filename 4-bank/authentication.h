@@ -112,7 +112,7 @@ int joinAccount(User *possibleUser){
         }
     }
     if(feof(fptr)){
-        printf(RED"\nfail to login!\n"WHT);
+        printf(RED"\nauthentication failure!\n"WHT);
         return 1;
     }
     free(line);
@@ -128,7 +128,7 @@ int isValidAccNo(char *accNo){
 
     if (AccNolen != MAX_ACC_NO + 2)
     {
-        printf(RED"\nfail to login!\n"WHT);
+        printf(RED"\nauthentication failure!\n"WHT);
         return 1;
     }
     
@@ -149,6 +149,6 @@ int isValidAccNo(char *accNo){
         return 0;
     }
     
-    printf(RED"\nfail to login!\n"WHT);
+    printf(RED"\nauthentication failure!\n"WHT);
     return 1;
 }

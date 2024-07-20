@@ -22,10 +22,13 @@ char* getUserAcc(char *userName,char *userAcc);
 char* extractAttributeValue(char *buffer,char *attribute);
 void deposit(User *user);
 void withdraw(User *user);
-void transfer();
+void transfer(User *userFrom);
 void accDetails(User *user);
 void addTraDetails(char*time,char *userName,char *userAcc, char *type, double value);
 void traDetails();
+void addTranferDetails(char*time,User *userFrom, User userTo, double value);
+int  removeValue(User *userFrom,double value);
+void addValue(User *userTo, double value);
 
 
 void startBank(User *user, int option)
@@ -41,7 +44,7 @@ void startBank(User *user, int option)
             withdraw(user);
             break;
         case 3:
-            transfer();
+            transfer(user);
             break;
         case 4:
             accDetails(user);
@@ -170,9 +173,6 @@ inline void withdraw(User *user){
     addTraDetails(ctime(&tm),user->name,user->accNo,"WITHDRAW",withdraw);
 }
 
-inline void transfer()
-{
-}
 
 inline void accDetails(User *user)
 {
@@ -219,13 +219,93 @@ void addTraDetails(char*time,char *userName,char *userAcc, char *type, double va
     fprintf(file, "date of transaction: %s%s\nname: %s\naccount number: %s\nvalue: %.2f\n",time,type,userName,userAcc,value);
     fprintf(file,"----\n");
 }
-// void addTranferDetails(char*time,char *userName,char *userAcc, char *type, double value){
-//     FILE *file;
+void addTranferDetails(char*time,User *userFrom, User userTo, double value){
+    FILE *file;
 
-//     file = fopen("traDetails", "a");
+    file = fopen("traDetails", "a");
 
-//     fprintf(crAcc, "date of transaction: %sname: %s\naccount number: %s\n%s\nvalue: %ld\n",timeTra,userName,userAcc,type,value);
-//     printf("%s\n", "-----------------");
-// }
+    fprintf(file,"date of transaction: %s%s\nFROM: %s\naccount number: %s\n",time, "TRANSFER",userFrom->name,userFrom->accNo);
+    fprintf(file,"TO: %s\naccount number: %s\nvalue: %.2f\n",userTo.name,userTo.accNo,value);
+    fprintf(file,"----\n");
+}
 
+void transfer(User *userFrom){
+    time_t tm;
+    time(&tm);
 
+    User userTo;
+    initializeUser(&userTo);
+
+    double transfer;
+
+    printf("\nACCOUNT TO MAKE THE TRANSFER:\n");
+    if(joinAccount(&userTo) != 1){
+
+        printf("\nAmount to transfer: ");
+        scanf("%le",&transfer);
+
+        char *n1 = userFrom->accNo;
+        char *n2 = userTo.accNo;
+
+        if(strcmp(n1,n2) != 0){
+            if (removeValue(userFrom,transfer) == 0)
+            {
+                addValue(&userTo,transfer);
+                addTranferDetails(ctime(&tm),userFrom,userTo,transfer);
+            }
+        }else{
+            printf(RED"\nERROR!!\n"WHT);
+        }
+    }
+}
+
+int removeValue(User *userFrom,double value){
+    time_t tm;
+    time(&tm);
+
+    char *strAccValue;
+    double oldValue;
+    strAccValue = (char *) malloc(MAX_LINE_LENGTH-10);
+
+    char *cpBuffer = getUserAcc(userFrom->name,userFrom->accNo);
+
+    strAccValue = extractAttributeValue(cpBuffer, "balance:");
+
+    oldValue = strtod(strAccValue, NULL);
+
+    FILE *crAcc = fopen(cpBuffer, "a");
+
+    if ((oldValue - value) < 0)
+    {
+        printf(RED"\ninsufficient funds!\n"WHT);
+        fprintf(crAcc,"balance: R$%.2f\n",(oldValue));
+        return 1;
+    }else{
+    printf("\n -%.2f from %s\n",value,userFrom->name);
+
+    fprintf(crAcc,"balance: R$%.2f\n",(oldValue-value));
+    }
+
+    return 0;
+}
+
+void addValue(User *userTo, double value){
+    time_t tm;
+    time(&tm);
+
+    char *strAccValue;
+    double oldValue;
+    strAccValue = (char *) malloc(MAX_LINE_LENGTH-10);
+
+    char *cpBuffer = getUserAcc(userTo->name,userTo->accNo);
+
+    strAccValue = extractAttributeValue(cpBuffer, "balance:");
+
+    oldValue = strtod(strAccValue, NULL);
+
+    FILE *crAcc = fopen(cpBuffer, "a");
+
+    printf("\n +%.2f to %s\n",value,userTo->name);
+
+    fprintf(crAcc,"balance: R$%.2f\n",(oldValue+value));
+}
