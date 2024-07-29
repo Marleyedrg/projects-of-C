@@ -24,7 +24,7 @@ https://github.com/Marleyedrg/15-projects-of-C/tree/main/2-slice
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/3-calendar
 # 4. [x] Bank Management System
 how to use:
-
+./bank
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/4-bank
 # 5. [ ] Student record management system
 # 6. [ ] Unit converter C project
