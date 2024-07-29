@@ -22,7 +22,10 @@ https://github.com/Marleyedrg/30-days-of-C/blob/main/1-Calculator/calculator.c
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/2-slice
 # 3. [x] Building a Calendar using C 
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/3-calendar
-# 4. [ ] Bank Management System
+# 4. [x] Bank Management System
+how to use:
+
+https://github.com/Marleyedrg/15-projects-of-C/tree/main/4-bank
 # 5. [ ] Student record management system
 # 6. [ ] Unit converter C project
 # 7. [ ] Virtual workplace application
