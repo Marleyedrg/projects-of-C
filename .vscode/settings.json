@@ -6,6 +6,7 @@
         "typeinfo": "c",
         "ctype.h": "c",
         "authentication.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "type_traits": "c"
     }
 }
