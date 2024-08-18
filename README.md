@@ -25,19 +25,18 @@ https://github.com/Marleyedrg/15-projects-of-C/tree/main/3-calendar
 # 4. [x] Bank Management System
 how to use:
 ./bank
-
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/4-bank
-# 5. [ ] Student record management system
-# 6. [ ] Unit converter C project
+# 5. [ ] study the sign of a function
+# 6. [ ] create 2 basic C functions
 # 7. [ ] Virtual workplace application
 # 8. [ ] Food order management system
-# 9. [ ] Mini Voting System
+# 9. [ ] solve 2 problems using more than one data structure in each one
 # 10. [ ] Library Management System
 # 11. [ ] Bus reservation system
-# 12. [ ] Hospital management system using C project
+# 12. [ ] solve a problem using logarithm
 # 13. [ ] Typing Tutor
 # 14. [ ] Contact management system 
-# 15. [ ] Railway reservation system
+# 15. [ ] chat on the same network, on different PCs
 
 ALL PROJECTS WERE TAKEN FROM THIS WEBSITE:
 ### codegnan.com
