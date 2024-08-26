@@ -26,17 +26,13 @@ https://github.com/Marleyedrg/15-projects-of-C/tree/main/3-calendar
 how to use:
 ./bank
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/4-bank
-# 5. [ ] study the sign of a function
+# 5. [ ] Implement a Simple File-Based Key-Value Store in C
 # 6. [ ] Virtual workplace application
-# 7. [ ] create 2 basic C functions
-# 8. [ ] Food order management system
-# 9. [ ] Library Management System
-# 10. [ ] solve 2 problems using more than one data structure in each one
-# 11. [ ] Bus reservation system
-# 12. [ ] solve a problem using logarithm
-# 13. [ ] Typing Tutor
-# 14. [ ] Contact management system 
-# 15. [ ] chat on the same network, on different PCs via http
+# 7. [ ] create 1 basic C functions
+# 8. [ ] Library Management System
+# 9. [ ] Typing Tutor
+# 10. [ ] ???
+# 11. [ ] chat on the same network, on different PCs via http
 
 ALL PROJECTS WERE TAKEN FROM THIS WEBSITE:
 ### codegnan.com
