@@ -26,13 +26,8 @@ https://github.com/Marleyedrg/15-projects-of-C/tree/main/3-calendar
 how to use:
 ./bank
 https://github.com/Marleyedrg/15-projects-of-C/tree/main/4-bank
-# 5. [ ] Implement a Simple File-Based Key-Value Store in C
-# 6. [ ] Virtual workplace application
-# 7. [ ] create 1 basic C functions
-# 8. [ ] Library Management System
-# 9. [ ] Typing Tutor
-# 10. [ ] ???
-# 11. [ ] chat on the same network, on different PCs via http
+# 5. [ ] ???
+# 6. [ ] chat on the same network, on different PCs via http
 
 ALL PROJECTS WERE TAKEN FROM THIS WEBSITE:
 ### codegnan.com
