@@ -2,7 +2,7 @@
  * FILE: slice.c
  * AUTHOR: MARLEY
  * DESCRIPTION: An implementation of the slice function in C
- * DATE: 10/07/2024
+ * DATE: 10/07/2024 
  * USE:
  * slice(string, start, end)
  * start: The position where your slice starts, starting with 0
